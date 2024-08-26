@@ -1,0 +1,25 @@
+{
+  "name": "@omnedia/ngx-spotlight",
+  "description": "A simple component library to create a spotlight effect.",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^18.2.0",
+    "@angular/core": "^18.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "keywords": [
+    "npm",
+    "background",
+    "spotlight",
+    "light",
+    "animation"
+  ],
+  "repository": {
+    "url": "https://github.com/omnedia/ngx-spotlight"
+  },
+  "author": "Markus Block (markus.block@omnedia.com)",
+  "license": "MIT"
+}

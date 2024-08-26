@@ -1,0 +1,38 @@
+.om-spotlight {
+  --om-spotlight-color: white;
+
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  .om-spotlight-light {
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    top: -40%;
+    left: -28%;
+    z-index: 1;
+
+    &.animated {
+      opacity: 0;
+      animation: om-spotlight 2s ease 0.75s 1 forwards;
+    }
+  }
+
+  .om-spotlight-light-ellipse {
+    fill: var(--om-spotlight-color);
+  }
+}
+
+@keyframes om-spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0%, 0%) scale(1);
+  }
+}
