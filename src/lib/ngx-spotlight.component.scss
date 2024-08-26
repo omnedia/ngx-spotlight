@@ -16,6 +16,7 @@
     z-index: 1;
 
     &.animated {
+      transform: translate(-72%, -62%) scale(0.5);
       opacity: 0;
       animation: om-spotlight 2s ease 0.75s 1 forwards;
     }
