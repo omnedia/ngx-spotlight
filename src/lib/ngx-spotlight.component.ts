@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
+import {CommonModule, isPlatformBrowser} from '@angular/common';
+import {AfterViewInit, Component, ElementRef, Inject, Input, OnDestroy, PLATFORM_ID, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'om-spotlight',
@@ -28,11 +28,18 @@ export class NgxSpotlightComponent implements AfterViewInit, OnDestroy {
 
   spotlightInViewport = false;
 
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {
+  }
+
   ngAfterViewInit(): void {
-    this.intersectionObserver = new IntersectionObserver(([entry]) => {
-      this.renderContents(entry.isIntersecting)
-    })
-    this.intersectionObserver.observe(this.elementRef.nativeElement);
+    if (isPlatformBrowser(this.platformId)) {
+      this.intersectionObserver = new IntersectionObserver(([entry]) => {
+        this.renderContents(entry.isIntersecting)
+      })
+      this.intersectionObserver.observe(this.elementRef.nativeElement);
+    }
   }
 
   ngOnDestroy(): void {
