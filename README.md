@@ -1,5 +1,13 @@
 # ngx-spotlight
 
+<a href="https://ngxui.com" target="_blank" style="display: flex;gap: .5rem;align-items: center;cursor: pointer; padding: 0 0 0 0; height: fit-content;">
+  <img src="https://ngxui.com/assets/img/ngxui-logo.png" style="width: 64px;height: 64px;">
+  <p style="font-weight: bold; padding: 0; margin: 0; font-size: 4rem">NGXUI</p>
+</a>
+
+This Library is part of the NGXUI ecosystem. <br>
+View all available components at https://ngxui.com
+
 `@omnedia/ngx-spotlight` is an Angular library that creates a spotlight effect using SVG animations. The component highlights sections of your page when they enter the viewport, with customizable spotlight colors and optional animations. This is ideal for drawing attention to important content as users scroll through your Angular application.
 
 ## Features
@@ -22,21 +30,23 @@ npm install @omnedia/ngx-spotlight
 Import the `NgxSpotlightComponent` in your Angular module or component:
 
 ```typescript
-import { NgxSpotlightComponent } from '@omnedia/ngx-spotlight';
+import {NgxSpotlightComponent} from '@omnedia/ngx-spotlight';
 
 @Component({
   ...
-  imports: [
-    ...
-    NgxSpotlightComponent,
-  ],
+    imports:
+[
   ...
+    NgxSpotlightComponent,
+],
+...
 })
 ```
 
 Use the component in your template:
 
 ```html
+
 <om-spotlight
   [spotlightColor]="'#ffcc00'"
   [animation]="true"
@@ -55,6 +65,7 @@ Use the component in your template:
 ## API
 
 ```html
+
 <om-spotlight
   [spotlightColor]="spotlightColor"
   [animation]="animation"
@@ -71,6 +82,7 @@ Use the component in your template:
 ## Example
 
 ```html
+
 <om-spotlight [spotlightColor]="'#ff5733'" [animation]="true" styleClass="spotlight-container">
   <div class="highlighted-content">
     <p>This content is highlighted by the spotlight effect</p>
@@ -81,6 +93,7 @@ Use the component in your template:
 This will create a spotlight effect with a reddish-orange color that animates when the content enters the viewport.
 
 ## Styling
+
 - The Color can be styled by the API Input or via the styleClass in a global css file.
 - To change the position where the spotlight is shining use the styleClass and move the spotlight around.
 
@@ -89,6 +102,7 @@ This will create a spotlight effect with a reddish-orange color that animates wh
 In this example, the spotlight is styled with custom colors via css:
 
 ```html
+
 <om-spotlight styleClass="custom-spotlight">
   <div class="content">
     <p>Spotlight Content Here</p>
