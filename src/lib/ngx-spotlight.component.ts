@@ -1,5 +1,16 @@
 import {CommonModule, isPlatformBrowser} from '@angular/common';
-import {AfterViewInit, Component, ElementRef, Inject, Input, OnDestroy, PLATFORM_ID, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  OnDestroy,
+  PLATFORM_ID,
+  signal,
+  ViewChild
+} from '@angular/core';
 
 @Component({
   selector: 'om-spotlight',
@@ -7,6 +18,7 @@ import {AfterViewInit, Component, ElementRef, Inject, Input, OnDestroy, PLATFORM
   imports: [CommonModule],
   templateUrl: "./ngx-spotlight.component.html",
   styleUrl: "./ngx-spotlight.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxSpotlightComponent implements AfterViewInit, OnDestroy {
   @ViewChild('OmSpotlight') elementRef!: ElementRef<HTMLElement>;
@@ -26,7 +38,7 @@ export class NgxSpotlightComponent implements AfterViewInit, OnDestroy {
 
   private intersectionObserver?: IntersectionObserver;
 
-  spotlightInViewport = false;
+  spotlightInViewport = signal(false);
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object
@@ -49,10 +61,10 @@ export class NgxSpotlightComponent implements AfterViewInit, OnDestroy {
   }
 
   renderContents(isIntersecting: boolean) {
-    if (isIntersecting && !this.spotlightInViewport) {
-      this.spotlightInViewport = true;
+    if (isIntersecting && !this.spotlightInViewport()) {
+      this.spotlightInViewport.set(true);
     } else if (!isIntersecting) {
-      this.spotlightInViewport = false;
+      this.spotlightInViewport.set(false);
     }
   }
 }
